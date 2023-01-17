@@ -1,0 +1,31 @@
+---
+import "@fontsource/reenie-beanie";
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/icon.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} 🍊</title>
+  </head>
+  <body class="bg-blue-50">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  .bg {
+    background-image: url(/tereza.png);
+    background-size: 500px;
+    background-repeat: repeat;
+    minheight: 100vh;
+  }
+</style>

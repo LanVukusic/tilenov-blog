@@ -1,0 +1,23 @@
+---
+import "@fontsource/vollkorn";
+export interface Props {
+  title: string;
+  text: string;
+}
+
+const { text, title } = Astro.props;
+---
+
+<div class="bg-white rounded-md z-20">
+  <h1 class="text-4xl manslava">{title}</h1>
+  <p class="vollkorn text-xl">{text}</p>
+</div>
+
+<style>
+  .manslava {
+    font-family: "Mansalva", cursive;
+  }
+  .vollkorn {
+    font-family: "Vollkorn", serif;
+  }
+</style>

@@ -1,0 +1,28 @@
+---
+export interface Props {
+  text: string;
+  active: boolean;
+}
+
+const { text, active } = Astro.props;
+
+const cls = active ? "selected" : "";
+---
+
+<!-- <div class="w-48">
+  <img src="/oblakcek2.svg" alt="" srcset="" />
+</div> -->
+<button class={"manslava p-2 px-4 m-2 text-4xl z-20 text-gray-500" + cls}>
+  {text}</button
+>
+
+<style>
+  .selected {
+    border-radius: 2rem;
+    color: black;
+  }
+
+  .manslava {
+    font-family: "Mansalva", cursive;
+  }
+</style>

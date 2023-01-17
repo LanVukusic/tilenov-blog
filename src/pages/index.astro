@@ -1,0 +1,141 @@
+---
+import Layout from "../layouts/Layout.astro";
+import OblacekButton from "../components/oblacekButton.astro";
+import Oblacek from "../components/oblacek.astro";
+import Nogice from "../components/nogice.astro";
+import Content from "../components/content.astro";
+import "@fontsource/reenie-beanie";
+import "@fontsource/mansalva";
+---
+
+<Layout title="Tilenov blog">
+  <main class="bg-blue-50">
+    <div
+      id="oblaki"
+      class="w-full h-32 z-10"
+      style="background: url(topoblakcek.png);  background-size: contain; position: fixed; top: 0; background-repeat: repeat-x;"
+    >
+    </div>
+    <div
+      style="margin-top: 100vh;"
+      class="flex p-6 max-w-screen-lg mx-auto items-center justify-around mb-36"
+    >
+      <div style="transform: rotate(5deg);">
+        <Oblacek />
+      </div>
+      <div class="flex flex-col">
+        <h1 class="reenieBeenie text-5xl px-4 text-center">
+          Pretresljivi zapisi Tilena Letnerja
+        </h1>
+        <div class="flex items-start" id="header">
+          <div class="h-24 flex">
+            <div
+              class="w-8 h-8 flex"
+              style="transform: rotate(-20deg); transform: translate(3rem);"
+            >
+              <img src="listek2.png" />
+            </div>
+          </div>
+          <div class="manslava text-9xl text-amber-500 text-center">Moj bl</div>
+
+          <div class="w-16 h-16 flex mt-12" style="">
+            <img src="pomaranca.png" />
+          </div>
+          <div class="manslava text-9xl text-amber-500 text-center">g</div>
+          <div class="flex mt-24">
+            <div
+              class="w-8 h-8 flex"
+              style="transform: translate(-0.7rem)  rotate(20deg);"
+            >
+              <img src="listek1.png" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="transform: rotate(160deg);">
+        <Oblacek />
+      </div>
+    </div>
+
+    <div
+      class="w-full h-32"
+      style="background: url(topoblakcek3.png);  background-size: contain; background-repeat: repeat-x; transform: rotate(180deg);"
+    >
+    </div>
+    <div class="bg-white w-full py-6">
+      <div class="flex max-w-screen-md mx-auto justify-center">
+        <OblacekButton text="Jaz" active={false} />
+        <OblacekButton text="O meni" active />
+        <OblacekButton text="Več o meni" active={false} />
+      </div>
+    </div>
+    <div
+      class="w-full h-32"
+      style="background: url(topoblakcek3.png);  background-size: contain; background-repeat: repeat-x;"
+    >
+    </div>
+
+    <!-- <div class="w-full bg-red-400 h-36"></div> -->
+    <!-- <div class="w-full bg-amber-500">asdasd</div> -->
+    <div class="flex w-full">
+      <div class="">
+        <Content title="kurac" text="dolg text" />
+      </div>
+    </div>
+
+    <div class="bg h-screen -mt-24 pt-32"></div>
+    <Nogice />
+  </main>
+</Layout>
+
+<style>
+  .bg {
+    background-image: url(/tereza.png);
+    background-size: 400px;
+    background-repeat: repeat;
+    /* minheight: 100vh; */
+  }
+
+  .rainbow {
+    background: #40e0d0; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #ff0080,
+      #ff8c00,
+      #40e0d0
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #ff0080,
+      #ff8c00,
+      #40e0d0
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+
+  .reenieBeenie {
+    font-family: "Reenie Beanie", cursive;
+  }
+
+  .manslava {
+    font-family: "Mansalva", cursive;
+  }
+</style>
+
+<script>
+  const oblaki = document.querySelector("#oblaki");
+
+  document.addEventListener("scroll", (event) => {
+    let ticking = false;
+
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (oblaki) {
+          // @ts-ignore
+          oblaki.style.opacity = `${1 - window.scrollY / 500}`;
+        }
+      });
+
+      ticking = true;
+    }
+  });
+</script>
