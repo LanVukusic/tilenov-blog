@@ -1,11 +1,14 @@
 ---
 import "@fontsource/vollkorn";
+import type { Content } from "../dto";
+import BlockRenderer from "./cms/blockRenderer.astro";
+
 export interface Props {
   title: string;
-  text: string;
+  content: Content[];
 }
 
-const { text, title } = Astro.props;
+const { content, title } = Astro.props;
 ---
 
 <div class="bg-white rounded-xl z-20 p-8 shadow-xl my-16">
@@ -15,10 +18,8 @@ const { text, title } = Astro.props;
     </div>
     <h1 class="text-6xl manslava mb-8">{title}</h1>
   </div>
-  <p class="vollkorn text-xl py-4 text-justify">{text}</p>
-  <p class="vollkorn text-xl py-4 text-justify">{text}</p>
-  <p class="vollkorn text-xl py-4 text-justify">{text}</p>
-  <p class="vollkorn text-xl py-4 text-justify">{text}</p>
+
+  <BlockRenderer content={content} />
 
   <div class="text-right w-full reenieBeenie text-4xl pt-8">Tilen Letner</div>
 </div>

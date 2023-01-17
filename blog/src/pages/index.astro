@@ -1,0 +1,50 @@
+---
+import "@fontsource/mansalva";
+import { useSanityClient, groq } from "astro-sanity";
+import type { Post } from "../dto";
+import Outline from "../layouts/Outline.astro";
+
+export interface Props {}
+
+const {} = Astro.params;
+
+export async function getBlogs() {
+  const query = groq`*[_type == "blogpost"]`;
+  const firstPost = await useSanityClient().fetch(query);
+  return firstPost;
+}
+
+const blogs: Post[] = await getBlogs();
+---
+
+<Outline title="Tilenov blog">
+  <div class="flex mx-auto flex-col">
+    {
+      blogs.map((blog) => (
+        <div class="p-4 m-4 rounded bg-white shadow-lg flex flex-col">
+          <div class="flex">
+            <div class="w-8 h-8 flex" style="transform: rotate(20deg); ">
+              <img src="listek2.png" />
+            </div>
+            <h1 class="manslava text-5xl">{blog.naslov}</h1>
+          </div>
+
+          <div class="my-2 flex justify-center mt-8">
+            <a
+              href={blog.url + "#content"}
+              class="rounded-md bg-orange-500 px-6 py-2 font-bold text-white"
+            >
+              Preberi
+            </a>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Outline>
+
+<style>
+  .manslava {
+    font-family: "Mansalva", cursive;
+  }
+</style>

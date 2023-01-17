@@ -1,0 +1,31 @@
+---
+import Content from "../components/content.astro";
+import Outline from "../layouts/Outline.astro";
+import { useSanityClient, groq } from "astro-sanity";
+import type { Post } from "../dto";
+
+export interface Props {}
+const { blogname } = Astro.params;
+
+export function getStaticPaths() {
+  return [
+    { params: { blogname: "marks" } },
+    { params: { blogname: "hedonizem" } },
+  ];
+}
+
+console.log(blogname, await getFirstBlogPost(blogname));
+
+export async function getFirstBlogPost(url?: string) {
+  if (!url) return [];
+  const query = groq`*[_type == "blogpost" && url == "${url}"]`;
+  const firstPost = await useSanityClient().fetch(query);
+  return firstPost;
+}
+
+const post: Post = (await getFirstBlogPost(blogname))[0];
+---
+
+<Outline title="Tilenov blog">
+  <Content title={post.naslov} content={post.content} />
+</Outline>

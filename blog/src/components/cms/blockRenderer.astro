@@ -1,0 +1,35 @@
+---
+import { useSanityClient, groq } from "astro-sanity";
+import type { Content } from "../../dto";
+
+export interface Props {
+  content: Content[];
+}
+
+const { content } = Astro.props;
+---
+
+{
+  content.map((c) => (
+    <p class="vollkorn text-2xl text-justify px-16 text-gray-800 ">
+      {c.children.map((child) => {
+        if (child._type === "span") {
+          // strong
+          if (child.marks.includes("strong")) {
+            return <span class="font-bold">{child.text}</span>;
+          }
+          // underline
+          if (child.marks.includes("underline")) {
+            return <span class="underline">{child.text}</span>;
+          }
+          // em
+          if (child.marks.includes("em")) {
+            return <span class="italic">{child.text}</span>;
+          }
+
+          return <span class="">{child.text}</span>;
+        }
+      })}
+    </p>
+  ))
+}

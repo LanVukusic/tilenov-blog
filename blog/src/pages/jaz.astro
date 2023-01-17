@@ -1,0 +1,59 @@
+---
+import Outline from "../layouts/Outline.astro";
+import { useSanityClient, groq } from "astro-sanity";
+import BlockRenderer from "../components/cms/blockRenderer.astro";
+export async function getFirstBlogPost() {
+  const query = groq`*[_type == "jaz"]`;
+  const firstPost = await useSanityClient().fetch(query);
+  return firstPost;
+}
+
+type mark = "strong" | "em" | "underline" | "code" | "link";
+
+interface Child {
+  text: string;
+  _type: string;
+  marks: mark[];
+}
+
+const data = (await getFirstBlogPost())[0];
+
+// console.log(data);
+---
+
+<Outline title="O meni">
+  <div class="bg-white rounded-xl z-20 shadow-xl my-16 mx-auto">
+    <div class="flex -mt-24 mx-auto justify-center items-end">
+      <div class="w-16 h-16 flex" style="transform: rotate(-90deg); ">
+        <img src="listek1.png" />
+      </div>
+      <div
+        class="rounded-full h-56 w-56 shadow-lg"
+        style="background: url(/tilen.png); background-position: center;"
+      >
+      </div>
+      <div class="w-16 h-16 flex" style="transform: rotate(20deg); ">
+        <img src="listek1.png" />
+      </div>
+    </div>
+    <div class="flex py-4">
+      <h1 class="text-6xl manslava my-8 px-16">{data.naslov}</h1>
+    </div>
+    <BlockRenderer content={data.content} />
+    <div class="text-right w-full reenieBeenie text-4xl py-8 px-8">
+      Tilen Letner
+    </div>
+  </div>
+</Outline>
+
+<style>
+  .manslava {
+    font-family: "Mansalva", cursive;
+  }
+  .vollkorn {
+    font-family: "Vollkorn", serif;
+  }
+  .reenieBeenie {
+    font-family: "Reenie Beanie", cursive;
+  }
+</style>

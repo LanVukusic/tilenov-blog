@@ -3,12 +3,17 @@ import Layout from "../layouts/Layout.astro";
 import OblacekButton from "../components/oblacekButton.astro";
 import Oblacek from "../components/oblacek.astro";
 import Nogice from "../components/nogice.astro";
-import Content from "../components/content.astro";
 import "@fontsource/reenie-beanie";
 import "@fontsource/mansalva";
+
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
 ---
 
-<Layout title="Tilenov blog">
+<Layout title={title}>
   <main class="bg-blue-50">
     <div
       id="oblaki"
@@ -66,9 +71,9 @@ import "@fontsource/mansalva";
     </div>
     <div class="bg-white w-full py-6">
       <div class="flex max-w-screen-md mx-auto justify-center">
-        <OblacekButton text="Jaz" active={false} />
-        <OblacekButton text="O meni" active />
-        <OblacekButton text="Več o meni" active={false} />
+        <OblacekButton text="Jaz" href="/jaz" />
+        <OblacekButton text="Blog" href="/" />
+        <!-- <OblacekButton text="Ekipa" href="/ekipa" /> -->
       </div>
     </div>
     <div
@@ -80,15 +85,15 @@ import "@fontsource/mansalva";
     <!-- content section -->
 
     <div class="bg w-full flex -mt-24 min-h-screen">
-      <div class="mx-auto w-full max-w-screen-md mt-48 flex items-center">
-        <Content
-          title="Zgodba o marksu naslov"
-          text="What?When scrolling past certain DOM elements, we want to alter their behaviour so that they transition from statically positioned to fixed positioned.A classic example is the sticky site navigation. We have some form of intro image/splash for our site and a navigation bar that sits beneath. If we didn’t implement the “sticky” behaviour, as we scroll through our content, we lose the navigation bar and this forces the user to scroll back to the top in order to navigate which isn’t ideal 👎The ideal user experience is to make the navigation available to the user at all times in a simple way. Don’t let it go out of the viewport and keep it stuck at the top of the viewport when applicable 👍"
-        />
+      <div
+        class="mx-auto w-full max-w-screen-md flex items-center"
+        id="content"
+      >
+        <slot />
       </div>
     </div>
 
-    <div class="h-64"></div>
+    <div class="h-16"></div>
 
     <Nogice />
   </main>
