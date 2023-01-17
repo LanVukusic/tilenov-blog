@@ -14,9 +14,9 @@ export default {
       title: 'Naslov',
     },
     {
-      name: 'datum',
+      name: 'postAt',
       type: 'date',
-      title: 'Datum',
+      title: 'Datum za objavo',
     },
     {
       title: 'Content',

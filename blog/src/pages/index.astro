@@ -15,26 +15,26 @@ export async function getBlogs() {
 }
 
 const blogs: Post[] = await getBlogs();
+const filtered = blogs.filter((blog) => new Date(blog.postAt) <= new Date());
 ---
 
 <Outline title="Tilenov blog">
-  <div class="flex mx-auto flex-col">
+  <div
+    class="mx-auto rounded bg-white shadow-lg flex flex-col items-center max-w-screen-md w-full py-8"
+  >
+    <h2 class="manslava my-8 text-5xl text-amber-500">Kazalo</h2>
     {
-      blogs.map((blog) => (
-        <div class="p-4 m-4 rounded bg-white shadow-lg flex flex-col">
-          <div class="flex">
-            <div class="w-8 h-8 flex" style="transform: rotate(20deg); ">
+      filtered.map((blog) => (
+        <div class="p-4 m-4">
+          <div class="flex items-center">
+            <div
+              class="w-6 h-6 flex mr-4"
+              style={`transform: rotate(${Math.random() * 180}deg);`}
+            >
               <img src="listek2.png" />
             </div>
-            <h1 class="manslava text-5xl">{blog.naslov}</h1>
-          </div>
-
-          <div class="my-2 flex justify-center mt-8">
-            <a
-              href={blog.url + "#content"}
-              class="rounded-md bg-orange-500 px-6 py-2 font-bold text-white"
-            >
-              Preberi
+            <a class="manslava text-3xl" href={blog.url + "#content"}>
+              {blog.naslov}
             </a>
           </div>
         </div>
@@ -46,5 +46,8 @@ const blogs: Post[] = await getBlogs();
 <style>
   .manslava {
     font-family: "Mansalva", cursive;
+  }
+  .reenieBeenie {
+    font-family: "Reenie Beanie", cursive;
   }
 </style>

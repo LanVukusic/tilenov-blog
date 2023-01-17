@@ -12,6 +12,7 @@ export interface Content {
 
 export interface Post {
   naslov: string;
+  postAt: string;
   url: string;
   _createdAt: string;
   _updatedAt: string;

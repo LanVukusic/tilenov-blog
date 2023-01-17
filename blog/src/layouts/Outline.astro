@@ -18,46 +18,60 @@ const { title } = Astro.props;
     <div
       id="oblaki"
       class="w-full h-48 z-10"
-      style="background: url(topoblakcek.png);  background-size: contain; position: fixed; top: 0; background-repeat: repeat-x;"
+      style="background: url(/topoblakcek.png);  background-size: contain; position: fixed; top: 0; background-repeat: repeat-x;"
     >
     </div>
+
+    <div class="md:block hidden" style="margin-top: 100vh;"></div>
     <div
-      style="margin-top: 100vh;"
-      class="flex p-6 max-w-screen-lg mx-auto items-center justify-around mb-36"
+      class="flex p-6 max-w-screen-lg mx-auto items-center justify-around md:mb-36 flex-nowrap mt-36"
     >
-      <div style="transform: rotate(5deg);">
+      <div style="transform: rotate(5deg);" class="md:block hidden">
         <Oblacek />
       </div>
-      <div class="flex flex-col">
-        <h1 class="reenieBeenie text-5xl px-4 text-center">
+      <div class="flex flex-col flex-nowrap">
+        <h1 class="reenieBeenie md:text-5xl text-3xl px-4 text-center">
           Pretresljivi zapisi Tilena Letnerja
         </h1>
-        <div class="flex items-start" id="header">
-          <div class="h-24 flex">
+
+        <!-- orange text -->
+        <div
+          class="flex justify-center flex-nowrap md:text-9xl text-6xl"
+          id="header"
+        >
+          <div class="h-24 md:flex hidden">
             <div
               class="w-8 h-8 flex"
               style="transform: rotate(-20deg); transform: translate(3rem);"
             >
-              <img src="listek2.png" />
+              <img src="/listek2.png" />
             </div>
           </div>
-          <div class="manslava text-9xl text-amber-500 text-center">Moj bl</div>
 
-          <div class="w-16 h-16 flex mt-12" style="">
-            <img src="pomaranca.png" />
+          <!-- seo optimization -->
+          <h1 class="hidden">moj blog</h1>
+
+          <div class="manslava text-amber-500 text-center whitespace-nowrap">
+            Moj bl
           </div>
-          <div class="manslava text-9xl text-amber-500 text-center">g</div>
-          <div class="flex mt-24">
+
+          <div class="md:w-16 md:h-16 w-14 h-14 mt-1 flex md:mt-12" style="">
+            <img src="/pomaranca.png" class="md:block hidden" />
+            <img src="/icon.png" class="md:hidden block" />
+          </div>
+          <div class="manslava text-amber-500 text-center">g</div>
+
+          <div class="mt-24 md:flex hidden">
             <div
               class="w-8 h-8 flex"
               style="transform: translate(-0.7rem)  rotate(20deg);"
             >
-              <img src="listek1.png" />
+              <img src="/listek1.png" />
             </div>
           </div>
         </div>
       </div>
-      <div style="transform: rotate(160deg);">
+      <div style="transform: rotate(160deg);" class="md:block hidden">
         <Oblacek />
       </div>
     </div>
@@ -66,19 +80,19 @@ const { title } = Astro.props;
 
     <div
       class="w-full h-32"
-      style="background: url(topoblakcek3.png);  background-size: contain; background-repeat: repeat-x; transform: rotate(180deg);"
+      style="background: url(/topoblakcek3.png);  background-size: contain; background-repeat: repeat-x; transform: rotate(180deg);"
     >
     </div>
     <div class="bg-white w-full py-6">
       <div class="flex max-w-screen-md mx-auto justify-center">
-        <OblacekButton text="Jaz" href="/jaz" />
-        <OblacekButton text="Blog" href="/" />
+        <OblacekButton text="Jaz" href="/jaz#content" />
+        <OblacekButton text="Blog" href="/#content" />
         <!-- <OblacekButton text="Ekipa" href="/ekipa" /> -->
       </div>
     </div>
     <div
       class="w-full h-32"
-      style="background: url(topoblakcek3.png);  background-size: contain; background-repeat: repeat-x;"
+      style="background: url(/topoblakcek3.png);  background-size: contain; background-repeat: repeat-x;"
     >
     </div>
 
@@ -86,7 +100,7 @@ const { title } = Astro.props;
 
     <div class="bg w-full flex -mt-24 min-h-screen">
       <div
-        class="mx-auto w-full max-w-screen-md flex items-center"
+        class="mx-auto w-full max-w-screen-md flex items-center justify-center"
         id="content"
       >
         <slot />

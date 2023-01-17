@@ -11,7 +11,7 @@ const { content } = Astro.props;
 
 {
   content.map((c) => (
-    <p class="vollkorn text-2xl text-justify px-16 text-gray-800 ">
+    <p class="vollkorn md:text-xl text-md text-justify px-16 py-2 text-gray-800 ">
       {c.children.map((child) => {
         if (child._type === "span") {
           // strong
