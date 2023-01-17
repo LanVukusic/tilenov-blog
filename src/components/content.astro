@@ -8,9 +8,19 @@ export interface Props {
 const { text, title } = Astro.props;
 ---
 
-<div class="bg-white rounded-md z-20">
-  <h1 class="text-4xl manslava">{title}</h1>
-  <p class="vollkorn text-xl">{text}</p>
+<div class="bg-white rounded-xl z-20 p-8 shadow-xl my-16">
+  <div class="flex py-4">
+    <div class="w-16 h-16 flex" style="transform: rotate(-20deg); ">
+      <img src="listek1.png" />
+    </div>
+    <h1 class="text-6xl manslava mb-8">{title}</h1>
+  </div>
+  <p class="vollkorn text-xl py-4 text-justify">{text}</p>
+  <p class="vollkorn text-xl py-4 text-justify">{text}</p>
+  <p class="vollkorn text-xl py-4 text-justify">{text}</p>
+  <p class="vollkorn text-xl py-4 text-justify">{text}</p>
+
+  <div class="text-right w-full reenieBeenie text-4xl pt-8">Tilen Letner</div>
 </div>
 
 <style>
@@ -19,5 +29,8 @@ const { text, title } = Astro.props;
   }
   .vollkorn {
     font-family: "Vollkorn", serif;
+  }
+  .reenieBeenie {
+    font-family: "Reenie Beanie", cursive;
   }
 </style>

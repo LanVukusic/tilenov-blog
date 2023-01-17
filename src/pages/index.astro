@@ -12,7 +12,7 @@ import "@fontsource/mansalva";
   <main class="bg-blue-50">
     <div
       id="oblaki"
-      class="w-full h-32 z-10"
+      class="w-full h-48 z-10"
       style="background: url(topoblakcek.png);  background-size: contain; position: fixed; top: 0; background-repeat: repeat-x;"
     >
     </div>
@@ -57,6 +57,8 @@ import "@fontsource/mansalva";
       </div>
     </div>
 
+    <!-- navbar section -->
+
     <div
       class="w-full h-32"
       style="background: url(topoblakcek3.png);  background-size: contain; background-repeat: repeat-x; transform: rotate(180deg);"
@@ -75,15 +77,19 @@ import "@fontsource/mansalva";
     >
     </div>
 
-    <!-- <div class="w-full bg-red-400 h-36"></div> -->
-    <!-- <div class="w-full bg-amber-500">asdasd</div> -->
-    <div class="flex w-full">
-      <div class="">
-        <Content title="kurac" text="dolg text" />
+    <!-- content section -->
+
+    <div class="bg w-full flex -mt-24 min-h-screen">
+      <div class="mx-auto w-full max-w-screen-md mt-48 flex items-center">
+        <Content
+          title="Zgodba o marksu naslov"
+          text="What?When scrolling past certain DOM elements, we want to alter their behaviour so that they transition from statically positioned to fixed positioned.A classic example is the sticky site navigation. We have some form of intro image/splash for our site and a navigation bar that sits beneath. If we didn’t implement the “sticky” behaviour, as we scroll through our content, we lose the navigation bar and this forces the user to scroll back to the top in order to navigate which isn’t ideal 👎The ideal user experience is to make the navigation available to the user at all times in a simple way. Don’t let it go out of the viewport and keep it stuck at the top of the viewport when applicable 👍"
+        />
       </div>
     </div>
 
-    <div class="bg h-screen -mt-24 pt-32"></div>
+    <div class="h-64"></div>
+
     <Nogice />
   </main>
 </Layout>
