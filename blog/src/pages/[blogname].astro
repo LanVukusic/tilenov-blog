@@ -14,8 +14,6 @@ export function getStaticPaths() {
   ];
 }
 
-console.log(blogname, await getFirstBlogPost(blogname));
-
 export async function getFirstBlogPost(url?: string) {
   if (!url) return [];
   const query = groq`*[_type == "blogpost" && url == "${url}"]`;
