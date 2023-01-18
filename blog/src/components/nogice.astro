@@ -1,15 +1,51 @@
 ---
+const quotes = {
+  "Matjaž Škrlec": "Filozof, ki te preseneti s svojimi modrostmi.",
+  "Tia Jančič": "Tilen Cimer.",
+  "Lan Vukušič": "Spran filozof, ki lepo preganja Čopija",
+  "Ana Hladnik":
+    "Uglajen gospodič, ki lahko preseneti z ostrim jezikom. Drugače nadvse prijeten sogovornik, ki vedno povpraša po počutju svojih bližnjih.",
+  "Nina Špilar": "Enostavno edinstven človek, s popolnimi kodri.",
+  "Gašper Čopi": "Presneti filozof.",
+  "Nik Globičnik": "Naravnost presunljivo doživetje.",
+  "Tereza Hladnik":
+    "Izjemno prijazna in nekonfliktna oseba, ki je vedno zaželjena v vsaki družbi.",
+  "Tit Primožič": "Kaštrun.",
+  "Manja Kavčič": "Visoko intelegenčni maneken xd.",
+  "Manca Nared": "Pogovor z njim je kakor skladba grotesknega značaja.",
+  "Urh Drofenik": "Gospod.",
+};
+
+// random quote object
+const randomQuote =
+  Object.keys(quotes)[Math.floor(Math.random() * Object.keys(quotes).length)];
 ---
 
-<div class="groundbg w-full h-64 flex justify-center -mt-36">
-  <div class="flex pt-16"></div>
+<div class="groundbg w-full h-96 flex justify-center -mt-36">
+  <div class="flex pt-16 w-full">
+    <div class="flex flex-col items-center w-full">
+      <div class="text-center mt-2 text-md pt-16 w-full max-w-screen-md">
+        <div class="text-lime-50 w-full font-bold text-4xl opacity-75">
+          {quotes[randomQuote]}
+        </div>
+        <div class="w-full flex justify-end text-xl opacity-80">
+          <span class="bg-lime-50 px-4 py-1 rounded-md text-lime-900 mt-8">
+            {randomQuote}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <style>
   .groundbg {
-    background-image: url("/trawa.png");
+    background-image: url("/trawa2.png");
     background-repeat: repeat-x;
     background-size: contain;
     background-position: center;
+  }
+  .reenieBeenie {
+    font-family: "Reenie Beanie", cursive;
   }
 </style>
