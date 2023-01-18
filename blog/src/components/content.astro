@@ -22,9 +22,10 @@ const { content, title, updatedAt } = Astro.props;
       <h1 class="text-6xl manslava mb-2">
         {title}
       </h1>
-      <div class="w-full flex justify-end mr-8">
-        <h4 class="text-xl manslava mb-8 text-gray-500">
-          {new Date(updatedAt).toLocaleDateString()}
+
+      <div class="w-full flex justify-end mt-2">
+        <h4 class="text-xl manslava mb-8 p-2 text-gray-500 -rotate-12 mr-4">
+          {new Date(updatedAt).toLocaleDateString("sl", {})}
         </h4>
       </div>
     </div>

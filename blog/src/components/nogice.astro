@@ -1,4 +1,5 @@
 ---
+import "@fontsource/mansalva";
 ---
 
 <div
@@ -8,17 +9,17 @@
     <div class="flex flex-col items-center w-full">
       <div class="text-center text-md w-full max-w-screen-md">
         <div
-          class="text-lime-50 w-full font-bold md:text-4xl text-xl opacity-80"
+          class="text-gray-900 w-full font-bold md:text-4xl text-xl manslava opacity-80 text-justify px-8"
           id="quote"
         >
-          <!-- generated -->
+          <!-- generated quote -->
         </div>
-        <div class="w-full flex justify-end text-xl opacity-80">
+        <div class="w-full flex justify-end text-xl opacity-80 manslava">
           <span
-            class="bg-lime-50 px-4 md:text-md text-sm py-1 rounded-md text-lime-900 md:mt-8 m-8"
+            class="bg-amber-900 px-4 md:text-xl text-md py-1 rounded-md text-amber-100 md:mt-8 m-8"
             id="author"
           >
-            <!-- generated -->
+            <!-- generated author-->
           </span>
         </div>
       </div>
@@ -53,7 +54,7 @@
   const quote = document.getElementById("quote");
   const author = document.getElementById("author");
   const randomQuote = getRandomQuote();
-  quote.innerHTML = quotes[randomQuote];
+  quote.innerHTML = ' " ' + quotes[randomQuote] + ' " ';
   author.innerHTML = randomQuote;
 </script>
 
@@ -61,7 +62,8 @@
   .groundbg {
     background-image: url("/trawa2.png");
   }
-  .reenieBeenie {
-    font-family: "Reenie Beanie", cursive;
+
+  .manslava {
+    font-family: "Mansalva", cursive;
   }
 </style>
