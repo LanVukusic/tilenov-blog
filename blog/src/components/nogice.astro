@@ -1,24 +1,4 @@
 ---
-const quotes = {
-  "Matjaž Škrlec": "Filozof, ki te preseneti s svojimi modrostmi.",
-  "Tia Jančič": "Tilen Cimer.",
-  "Lan Vukušič": "Spran filozof, ki lepo preganja Čopija",
-  "Ana Hladnik":
-    "Uglajen gospodič, ki lahko preseneti z ostrim jezikom. Drugače nadvse prijeten sogovornik, ki vedno povpraša po počutju svojih bližnjih.",
-  "Nina Špilar": "Enostavno edinstven človek, s popolnimi kodri.",
-  "Gašper Čopi": "Presneti filozof.",
-  "Nik Globičnik": "Naravnost presunljivo doživetje.",
-  "Tereza Hladnik":
-    "Izjemno prijazna in nekonfliktna oseba, ki je vedno zaželjena v vsaki družbi.",
-  "Tit Primožič": "Kaštrun.",
-  "Manja Kavčič": "Visoko intelegenčni maneken xd.",
-  "Manca Nared": "Pogovor z njim je kakor skladba grotesknega značaja.",
-  "Urh Drofenik": "Gospod.",
-};
-
-// random quote object
-const randomQuote =
-  Object.keys(quotes)[Math.floor(Math.random() * Object.keys(quotes).length)];
 ---
 
 <div
@@ -29,20 +9,53 @@ const randomQuote =
       <div class="text-center text-md w-full max-w-screen-md">
         <div
           class="text-lime-50 w-full font-bold md:text-4xl text-xl opacity-80"
+          id="quote"
         >
-          {quotes[randomQuote]}
+          <!-- generated -->
         </div>
         <div class="w-full flex justify-end text-xl opacity-80">
           <span
             class="bg-lime-50 px-4 md:text-md text-sm py-1 rounded-md text-lime-900 md:mt-8 m-8"
+            id="author"
           >
-            {randomQuote}
+            <!-- generated -->
           </span>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  const quotes = {
+    "Matjaž Škrlec": "Filozof, ki te preseneti s svojimi modrostmi.",
+    "Tia Jančič": "Tilen Cimer.",
+    "Lan Vukušič": "Spran filozof, ki lepo preganja Čopija",
+    "Ana Hladnik":
+      "Uglajen gospodič, ki lahko preseneti z ostrim jezikom. Drugače nadvse prijeten sogovornik, ki vedno povpraša po počutju svojih bližnjih.",
+    "Nina Špilar": "Enostavno edinstven človek, s popolnimi kodri.",
+    "Gašper Čopi": "Presneti filozof.",
+    "Nik Globičnik": "Naravnost presunljivo doživetje.",
+    "Tereza Hladnik":
+      "Izjemno prijazna in nekonfliktna oseba, ki je vedno zaželjena v vsaki družbi.",
+    "Tit Primožič": "Kaštrun.",
+    "Manja Kavčič": "Visoko intelegenčni maneken xd.",
+    "Manca Nared": "Pogovor z njim je kakor skladba grotesknega značaja.",
+    "Urh Drofenik": "Gospod.",
+  };
+
+  function getRandomQuote() {
+    return Object.keys(quotes)[
+      Math.floor(Math.random() * Object.keys(quotes).length)
+    ];
+  }
+
+  const quote = document.getElementById("quote");
+  const author = document.getElementById("author");
+  const randomQuote = getRandomQuote();
+  quote.innerHTML = quotes[randomQuote];
+  author.innerHTML = randomQuote;
+</script>
 
 <style>
   .groundbg {
