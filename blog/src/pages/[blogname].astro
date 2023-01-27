@@ -28,9 +28,13 @@ const post: Post = (await getFirstBlogPost(blogname))[0];
 ---
 
 <Outline title="Tilenov blog">
-  <Content
-    title={post.naslov}
-    content={post.content}
-    updatedAt={post._updatedAt}
-  />
+  {
+    post && (
+      <Content
+        title={post.naslov}
+        content={post.content}
+        updatedAt={post._updatedAt}
+      />
+    )
+  }
 </Outline>

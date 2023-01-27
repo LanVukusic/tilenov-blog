@@ -17,12 +17,23 @@ const { title } = Astro.props;
   <main class="bg-blue-50">
     <div
       id="oblaki"
-      class="w-full h-48 z-10"
+      class="w-full h-48 z-10 flex justify-center items-center"
       style="background: url(/topoblakcek.png);  background-size: contain; position: fixed; top: 0; background-repeat: repeat-x;"
     >
     </div>
 
-    <div class="md:block hidden" style="margin-top: 100vh;"></div>
+    <div
+      class="md:flex hidden items-center justify-center font-bold text-xl opacity-40"
+      style="margin-top: 50vh; margin-bottom:50vh;"
+    >
+      <div class="flex">
+        <div class="opacity-50">
+          <p>Nahajajte se v oblakih, prizemljite se malo.</p>
+          <p>Al pa njki. Nevem.</p>
+          <p class="p-6 text-right">G.Č.</p>
+        </div>
+      </div>
+    </div>
     <div
       class="flex p-6 max-w-screen-lg mx-auto items-center justify-around md:mb-36 flex-nowrap mt-36"
     >
