@@ -7,24 +7,24 @@ import type { Post } from "../dto";
 export interface Props {}
 const { blogname } = Astro.params;
 
-export function getStaticPaths() {
-  return [
-    { params: { blogname: "opis-stanja" } },
-    { params: { blogname: "filozofska-zgoda" } },
-    { params: { blogname: "studentska-balada" } },
-    { params: { blogname: "prostori-protestantov" } },
-    { params: { blogname: "kratk-premislek" } },
-  ];
+export async function getStaticPaths() {
+  const query = groq`*[_type == "blogpost"]`;
+  const posts = await useSanityClient().fetch(query);
+  return posts.map((post: any) => ({
+    params: {
+      blogname: post.url,
+    },
+  }));
 }
 
-export async function getFirstBlogPost(url?: string) {
+export async function getBlogPosts(url?: string) {
   if (!url) return [];
   const query = groq`*[_type == "blogpost" && url == "${url}"]`;
-  const firstPost = await useSanityClient().fetch(query);
-  return firstPost;
+  const posts = await useSanityClient().fetch(query);
+  return posts;
 }
 
-const post: Post = (await getFirstBlogPost(blogname))[0];
+const post: Post = (await getBlogPosts(blogname))[0];
 ---
 
 <Outline title="Tilenov blog">
