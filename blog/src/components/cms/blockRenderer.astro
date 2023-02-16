@@ -11,7 +11,10 @@ const { content } = Astro.props;
 
 {
   content.map((c) => (
-    <p class="vollkorn md:text-xl text-md text-justify px-8 py-2 text-gray-800 ">
+    <p
+      class="vollkorn md:text-xl text-md text-justify px-8 py-2 text-gray-800"
+      style={"line-height: 1.6; maxw: 75ch; "}
+    >
       {c.children.map((child) => {
         if (child._type === "span") {
           // strong
