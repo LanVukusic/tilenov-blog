@@ -27,7 +27,7 @@ export async function getBlogPosts(url?: string) {
 const post: Post = (await getBlogPosts(blogname))[0];
 ---
 
-<Outline title="Tilenov blog">
+<Outline title={post.naslov}>
   {
     post && (
       <Content

@@ -20,6 +20,20 @@ const blogs: Post[] = (await getBlogs()).sort(
   (a: any, b: any) =>
     new Date(b.postAt).getTime() - new Date(a.postAt).getTime()
 );
+
+type TimedBlog = {
+  [year: string]: Post[];
+};
+
+const timedBlogs: TimedBlog = {};
+
+for (const blog of blogs) {
+  const y = new Date(blog.postAt).getFullYear().toString();
+  if (timedBlogs[y] == undefined) {
+    timedBlogs[y] = [];
+  }
+  timedBlogs[y].push(blog);
+}
 ---
 
 <Outline title="Tilenov blog">
@@ -27,29 +41,43 @@ const blogs: Post[] = (await getBlogs()).sort(
     class="mx-auto rounded bg-white shadow-lg flex flex-col md:items-center items-start max-w-screen-md w-full py-8"
   >
     <h2 class="manslava my-8 mx-auto text-5xl text-amber-500">Kazalo</h2>
+
     {
-      blogs.map((blog) => (
-        <>
-          <div class="p-4 m-4 hidden " id="blog">
-            <div class="flex items-center w-full">
-              <div
-                class="w-6 h-6 flex mr-4"
-                style={`transform: rotate(${Math.random() * 360}deg);`}
-              >
-                <img src="listek2.png" />
-              </div>
-              <div class="flex flex-col w-full">
-                <a class="manslava text-3xl" href={blog.url + "#content"}>
-                  {blog.naslov}
-                </a>
-                <span class="text-gray-500 reenieBeenie text-2xl">
-                  {blog.postAt}
-                </span>
-              </div>
+      Object.keys(timedBlogs)
+        .reverse()
+        .map((year) => (
+          <>
+            <div class="w-full flex justify-center items-center px-16 py-12">
+              <div class="h-0.5 w-full bg-gray-50" />
+              <h5 class="manslava px-4 my-2 mx-auto text-xl text-gray-400 tracking-widest font-light">
+                {year}
+              </h5>
+              <div class="h-0.5 w-full bg-gray-50" />
             </div>
-          </div>
-        </>
-      ))
+            {timedBlogs[year].map((blog) => (
+              <>
+                <div class="p-4 m-4 hidden " id="blog">
+                  <div class="flex items-center w-full">
+                    <div
+                      class="w-6 h-6 flex mr-4"
+                      style={`transform: rotate(${Math.random() * 360}deg);`}
+                    >
+                      <img src="listek2.png" />
+                    </div>
+                    <div class="flex flex-col w-full">
+                      <a class="manslava text-3xl" href={blog.url + "#content"}>
+                        {blog.naslov}
+                      </a>
+                      <span class="text-gray-500 reenieBeenie text-2xl">
+                        {blog.postAt}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ))}
+          </>
+        ))
     }
   </div>
 </Outline>
