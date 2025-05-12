@@ -28,12 +28,12 @@ import "@fontsource/mansalva";
 </div>
 
 <script>
-  const quotes = {
+  const quotes: Record<string, string> = {
     "Tilen Letner": "Sej zdej mam pa že občutek da me jebete v glavo.",
     "Tina Florjančič": "Prijeten fant, poln lepih besed.",
+    "Lan Vukušič": "Spran filozof, ki lepo preganja Čopija",
     "Matjaž Škrlec": "Filozof, ki te preseneti s svojimi modrostmi.",
     "Tia Jančič": "Tilen Cimer.",
-    "Lan Vukušič": "Spran filozof, ki lepo preganja Čopija",
     "Ana Hladnik":
       "Uglajen gospodič, ki lahko preseneti z ostrim jezikom. Drugače nadvse prijeten sogovornik, ki vedno povpraša po počutju svojih bližnjih.",
     "Nina Špilar": "Enostavno edinstven človek, s popolnimi kodri.",
@@ -56,8 +56,11 @@ import "@fontsource/mansalva";
   const quote = document.getElementById("quote");
   const author = document.getElementById("author");
   const randomQuote = getRandomQuote();
-  quote.innerHTML = ' " ' + quotes[randomQuote] + ' " ';
-  author.innerHTML = randomQuote;
+
+  if (quote && author) {
+    quote.innerHTML = ' " ' + quotes[randomQuote] + ' " ';
+    author.innerHTML = randomQuote;
+  }
 </script>
 
 <style is:inline>

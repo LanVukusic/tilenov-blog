@@ -1,14 +1,8 @@
 import { defineConfig } from "astro/config";
-
-// https://astro.build/config
 import tailwind from "@astrojs/tailwind";
 
-// https://astro.build/config
-import sanity from "astro-sanity";
+import sanity from "@sanity/astro";
 
-// https://astro.build/config
-
-// https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), sanity({
     projectId: "m93tb79t",
@@ -17,3 +11,5 @@ export default defineConfig({
     useCdn: true
   })]
 });
+
+

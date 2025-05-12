@@ -1,10 +1,10 @@
 ---
 import Outline from "../layouts/Outline.astro";
-import { useSanityClient, groq } from "astro-sanity";
 import BlockRenderer from "../components/cms/blockRenderer.astro";
+import { sanityClient } from "sanity:client";
 export async function getFirstBlogPost() {
-  const query = groq`*[_type == "jaz"]`;
-  const firstPost = await useSanityClient().fetch(query);
+  const query = `*[_type == "jaz"]`;
+  const firstPost = await sanityClient.fetch(query);
   return firstPost;
 }
 

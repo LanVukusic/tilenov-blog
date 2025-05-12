@@ -1,18 +1,17 @@
 ---
 import "@fontsource/mansalva";
 // @ts-ignore
-import { useSanityClient, groq } from "astro-sanity";
-import { log } from "astro/dist/core/logger/core";
 import type { Post } from "../dto";
 import Outline from "../layouts/Outline.astro";
+import { sanityClient } from "sanity:client";
 
 export interface Props {}
 
 const {} = Astro.params;
 
 export async function getBlogs() {
-  const query = groq`*[_type == "blogpost"]`;
-  const firstPost = await useSanityClient().fetch(query);
+  const query = `*[_type == "blogpost"]`;
+  const firstPost = await sanityClient.fetch(query);
   return firstPost;
 }
 
